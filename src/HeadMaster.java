@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class HeadMaster {
-    
+
     //private attributes
     private String name;
     private int yearExp;
@@ -78,10 +78,6 @@ public class HeadMaster {
     public int getTutor() {
         return tutor.size();
     }
-
-    public int newgetTutor() {
-        return tutor.size()-1;
-    }
     
     //method 
     public void addTutor() {
@@ -103,9 +99,7 @@ public class HeadMaster {
             System.out.println("Invalid index.");
             return;
         }
-        
 
         tutor.remove(tutorIndex);
     }
-    
 }
