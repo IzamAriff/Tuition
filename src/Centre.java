@@ -12,9 +12,7 @@ public class Centre {
     
     //private class attribute
     private ArrayList<HeadMaster> headmaster;
-    private ArrayList<Tutor> tutor;
-    private ArrayList<Student> student;
-    
+
     //constructor
     public Centre (String name, String registrationNum, int yearOfServices) {
         this.name = name;
@@ -23,8 +21,6 @@ public class Centre {
         
         input = new Scanner(System.in);
         this.headmaster = new ArrayList<>();
-        this.tutor = new ArrayList<>();
-        this.student = new ArrayList<>();
     }
 
     //setter and getter
@@ -70,10 +66,6 @@ public class Centre {
 
     public int getHeadMaster() {
         return headmaster.size();
-    }
-
-    public int newgetHeadMaster() {
-        return headmaster.size()-1;
     }
     
     //method 
