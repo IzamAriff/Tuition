@@ -125,9 +125,4 @@ public class Centre {
         Tutor tutor = headMaster.getTutor(tutorIndex);
         tutor.deleteStudent(studentIndex);
     }
-    
-    
-
-    
-    
 }
