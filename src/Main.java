@@ -15,12 +15,9 @@ public class Main {
         
         centre.add(new Centre(name, registrationNum, yearOfServices));
 		
-        
         // get input for the headmasters, that acts as a leader in a certain subject
         System.out.print("\n\nEnter number of headmasters : "); int numHeadmasters = input.nextInt(); input.nextLine();
-        
-        
-            
+           
         for (int i = 0; i < numHeadmasters; i++) {
 
             System.out.println("\nEnter details of headmaster #" + (i+1));
@@ -50,114 +47,113 @@ public class Main {
                     Student student = centre.get(0).getHeadMaster(i).getTutor(j).getStudent(k);
                     student.addMark();
 
-                    
-                    
                     }
                 }
             }
         }
 
-		
-
         PrintDetails detailsPrinter = new PrintDetails(centre);
         detailsPrinter.printDetails();
 
-        System.out.print("\nDo you want to delete a data from specific index of an object? (Y/N/A-adding object) :"); char character = input.next().charAt(0);
+        System.out.print("\nDo you want to delete or add data ? (Y-delete/A-adding object/N-exit) :"); char character = input.next().charAt(0);
 
-        while(character == 'Y' || character == 'y') {
+        while (character != 'N' || character != 'n') {
 
-            System.out.println("\n\n\n----------------------------Section below for deleting data purposes---------------------------------\n\n");
+            while(character == 'Y' || character == 'y') {
 
-            // Prompt the user to choose what to delete
-            System.out.println("\nWhat would you like to delete?");
-            System.out.println("1. Headmaster");
-            System.out.println("2. Tutor");
-            System.out.println("3. Student");
-            System.out.print("Enter your choice: "); int choice = input.nextInt(); input.nextLine();
-            
-            switch (choice) {
+                System.out.println("\n\n\n----------------------------Section below for deleting data purposes---------------------------------\n\n");
 
-                case 1:
+                // Prompt the user to choose what to delete
+                System.out.println("\nWhat would you like to delete?");
+                System.out.println("1. Headmaster");
+                System.out.println("2. Tutor");
+                System.out.println("3. Student");
+                System.out.print("Enter your choice: "); int choice = input.nextInt(); input.nextLine();
+                
+                switch (choice) {
 
-                    System.out.print("Enter the index of the headmaster you want to delete: "); int headMasterIndex = input.nextInt(); input.nextLine();
-                    centre.get(0).deleteHeadMaster(headMasterIndex);
+                    case 1:
 
-                    break;
+                        System.out.print("Enter the index of the headmaster you want to delete: "); int headMasterIndex = input.nextInt(); input.nextLine();
+                        centre.get(0).deleteHeadMaster(headMasterIndex);
 
-                case 2:
+                        break;
 
-                    System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
-                    System.out.print("Enter the index of the tutor you want to delete: "); int tutorIndex = input.nextInt(); input.nextLine();
-                    centre.get(0).deleteTutor(headMasterIndex, tutorIndex);
+                    case 2:
 
-                    break;
+                        System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
+                        System.out.print("Enter the index of the tutor you want to delete: "); int tutorIndex = input.nextInt(); input.nextLine();
+                        centre.get(0).deleteTutor(headMasterIndex, tutorIndex);
 
-                case 3:
+                        break;
 
-                    System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
-                    System.out.print("Enter the index of the tutor: "); tutorIndex = input.nextInt(); input.nextLine();
-                    System.out.print("Enter the index of the student you want to delete: "); int studentIndex = input.nextInt(); input.nextLine();
-                    
-                    centre.get(0).deleteStudent(headMasterIndex, tutorIndex, studentIndex);
+                    case 3:
 
-                    break;
+                        System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
+                        System.out.print("Enter the index of the tutor: "); tutorIndex = input.nextInt(); input.nextLine();
+                        System.out.print("Enter the index of the student you want to delete: "); int studentIndex = input.nextInt(); input.nextLine();
+                        
+                        centre.get(0).deleteStudent(headMasterIndex, tutorIndex, studentIndex);
 
-                default:
+                        break;
 
-                    System.out.println("Invalid choice. Please try again.");
+                    default:
+
+                        System.out.println("Invalid choice. Please try again.");
+                }
+
+                detailsPrinter.printDetails();
+                System.out.print("\nDo you want to continue deleting data ? (Y-delete/A-adding object/N-exit) :"); character = input.next().charAt(0);
+
             }
 
-            detailsPrinter.printDetails();
-            System.out.print("\nDo you want to continue deleting data ? (Y/N/A-adding object) :"); character = input.next().charAt(0);
+            while (character == 'A' || character == 'a' ) {
 
-        }
+                System.out.println("\n\n\n----------------------------Section below for adding data purposes---------------------------------\n\n");
 
-        while (character == 'A' || character == 'a' ) {
+                 // Prompt the user to choose what to add
+                System.out.println("\nWhat would you like to add ?");
+                System.out.println("1. Headmaster");
+                System.out.println("2. Tutor");
+                System.out.println("3. Student");
+                System.out.print("Enter your choice: "); int choice = input.nextInt(); input.nextLine();
 
-            System.out.println("\n\n\n----------------------------Section below for adding data purposes---------------------------------\n\n");
+                switch (choice) {
 
-// Prompt the user to choose what to add
-            System.out.println("\nWhat would you like to add ?");
-            System.out.println("1. Headmaster");
-            System.out.println("2. Tutor");
-            System.out.println("3. Student");
-            System.out.print("Enter your choice: "); int choice = input.nextInt(); input.nextLine();
+                    case 1:
 
-            switch (choice) {
+                        centre.get(0).addHeadMaster();
 
-                case 1:
+                        break;
 
-                    centre.get(0).addHeadMaster();
+                    case 2:
 
-                    break;
+                        System.out.print("Enter the index of the headmaster where you want to add the tutor: "); int headMasterIndex = input.nextInt(); input.nextLine();
 
-                case 2:
+                        centre.get(0).getHeadMaster(headMasterIndex).addTutor();
+                        break;
 
-                    System.out.print("Enter the index of the headmaster where you want to add the tutor: "); int headMasterIndex = input.nextInt(); input.nextLine();
+                    case 3:
 
-                    centre.get(0).getHeadMaster(headMasterIndex).addTutor();
-                    break;
+                        System.out.print("Enter the index of the headmaster where you want to add the student: "); headMasterIndex = input.nextInt(); input.nextLine();
+                        System.out.print("Enter the index of the tutor where you want to add the student: "); int tutorIndex = input.nextInt(); input.nextLine();
 
-                case 3:
+                        centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).addStudent();
 
-                    System.out.print("Enter the index of the headmaster where you want to add the student: "); headMasterIndex = input.nextInt(); input.nextLine();
-                    System.out.print("Enter the index of the tutor where you want to add the student: "); int tutorIndex = input.nextInt(); input.nextLine();
+                        int studentIndex = (centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).getStudent())-1;
+                        centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).getStudent(studentIndex).addMark();
 
-                    centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).addStudent();
+                        break;
 
-                    int studentIndex = (centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).getStudent())-1;
-                    centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).getStudent(studentIndex).addMark();
+                    default:
 
-                    break;
+                        System.out.println("Invalid choice. Please try again.");
+                }
 
-                default:
+                detailsPrinter.printDetails();
+                System.out.print("\nDo you want to continue adding data ? (Y-delete/A-adding object/N-exit) :"); character = input.next().charAt(0);
 
-                    System.out.println("Invalid choice. Please try again.");
             }
-
-            detailsPrinter.printDetails();
-            System.out.print("\nDo you want to continue adding data ? (Y/N/A-adding object) :"); character = input.next().charAt(0);
-
         }
         input.close();
     }
