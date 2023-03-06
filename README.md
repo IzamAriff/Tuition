@@ -1,4 +1,4 @@
-# Tuition
+# Tuition Centres
 This Java code is for managing a tuition center, specifically by adding, editing, and deleting information about headmasters, tutors, and students. It creates a new center with a name, registration number, and year of service. The user can then add multiple headmasters, each with a specified number of tutors, and each tutor with a specified number of students.
 
 The program uses an ArrayList to store information about the tuition center and its various components. The information about each headmaster, tutor, and student is stored in objects of their respective classes. The user is prompted to enter details for each headmaster, tutor, and student.
