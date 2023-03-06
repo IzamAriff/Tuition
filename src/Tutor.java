@@ -112,13 +112,7 @@ public class Tutor {
     public int getStudent() {
         return student.size();
     }
-
-    public int newgetStudent() {
-        return student.size()-1;
-    }
     
-    //method
-    //method of adding a student under the specific tutor
     public void addStudent() {
         
         System.out.print("\n\tStudent's Name : "); String name = input.nextLine();
@@ -135,8 +129,6 @@ public class Tutor {
             System.out.println("Invalid index.");
             return;
         }
-        
-
         student.remove(studentIndex);
     }
 
