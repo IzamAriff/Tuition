@@ -7,4 +7,5 @@ Once all the data has been entered, the program prints the details of the center
 
 The program also includes functionality to delete or add data. If the user chooses to delete data, they are prompted to select whether to delete a headmaster, tutor, or student. They are then asked to enter the index of the item they want to delete. If the user chooses to add data, they are prompted to select whether to add a headmaster, tutor, or student. Depending on the choice, the user may be asked to enter additional information such as the index of the headmaster where they want to add a tutor.
 
-Note that in this program, it assumes that each center has only one headmaster.
+Note that in this program, it assumes that each center has only one headmaster. Thus one headmaster represents one tuition centre.
+And the centre class is a collective of a centres.
