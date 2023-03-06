@@ -14,7 +14,6 @@ public class Student {
 
     //private class attributes
     private ArrayList<Mark> marks; 
-    private Mark[] mark;
     
     //constructor
     public Student(String name, String ic, String address, int year) {
@@ -25,7 +24,6 @@ public class Student {
 
         input = new Scanner(System.in);
         this.marks = new ArrayList<>();
-        this.mark = marks.toArray(new Mark[marks.size()]);
     }
     
     //setter and getter
