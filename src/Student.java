@@ -76,11 +76,12 @@ public class Student {
         return marks.get(index);
     }
 
-    //get all varible marks 
+    //get all variable marks 
     public ArrayList<Mark> getMarks() {
         return marks;
     }
-
+    
+    //get size of the marks
     public int getMark() {
         return marks.size();
     }
