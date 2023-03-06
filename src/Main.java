@@ -2,13 +2,15 @@
 import java.util.*;
 
 public class Main {
+
+    
     
     public static void main(String[] args) {
         
         Scanner input = new Scanner(System.in);
 
-		ArrayList<Centre> centre = new ArrayList<>();
-        
+        ArrayList<Centre> centre = new ArrayList<>();
+		
         // create a new centre
         System.out.print("Name of centre: "); String name = input.nextLine();
         System.out.print("Registration number: "); String registrationNum = input.nextLine();
@@ -63,7 +65,7 @@ public class Main {
         PrintDetails detailsPrinter = new PrintDetails(centre);
         detailsPrinter.printDetails();
 
-        System.out.print("Do you want to delete a data from specific index of an object? (Y/N) :"); char character = input.next().charAt(0);
+        System.out.print("\nDo you want to delete a data from specific index of an object? (Y/N/A-adding object) :"); char character = input.next().charAt(0);
 
         while(character == 'Y' || character == 'y') {
 
@@ -77,43 +79,30 @@ public class Main {
         System.out.print("Enter your choice: ");
         int choice = input.nextInt();
         input.nextLine();
-
-        //Centre centres = new Centre(name, registrationNum, yearOfServices);
         
         switch (choice) {
 
             case 1:
 
-                System.out.print("Enter the index of the headmaster you want to delete: ");
-                int headMasterIndex = input.nextInt();
-                input.nextLine();
+                System.out.print("Enter the index of the headmaster you want to delete: "); int headMasterIndex = input.nextInt(); input.nextLine();
                 centre.get(0).deleteHeadMaster(headMasterIndex);
 
                 break;
 
             case 2:
 
-                System.out.print("Enter the index of the headmaster: ");
-                headMasterIndex = input.nextInt();
-                input.nextLine();
-                System.out.print("Enter the index of the tutor you want to delete: ");
-                int tutorIndex = input.nextInt();
-                input.nextLine();
+                System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
+                System.out.print("Enter the index of the tutor you want to delete: "); int tutorIndex = input.nextInt(); input.nextLine();
                 centre.get(0).deleteTutor(headMasterIndex, tutorIndex);
 
                 break;
 
             case 3:
 
-                System.out.print("Enter the index of the headmaster: ");
-                headMasterIndex = input.nextInt();
-                input.nextLine();
-                System.out.print("Enter the index of the tutor: ");
-                tutorIndex = input.nextInt();
-                input.nextLine();
-                System.out.print("Enter the index of the student you want to delete: ");
-                int studentIndex = input.nextInt();
-                input.nextLine();
+                System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
+                System.out.print("Enter the index of the tutor: "); tutorIndex = input.nextInt(); input.nextLine();
+                System.out.print("Enter the index of the student you want to delete: "); int studentIndex = input.nextInt(); input.nextLine();
+                
                 centre.get(0).deleteStudent(headMasterIndex, tutorIndex, studentIndex);
 
                 break;
@@ -123,9 +112,8 @@ public class Main {
                 System.out.println("Invalid choice. Please try again.");
         }
         detailsPrinter.printDetails();
-        System.out.print("Do you want to delete a data from specific index of an object? (Y/N) :"); character = input.next().charAt(0);
+        System.out.print("Do you want to delete a data from specific index of an object? (Y/N/A-adding object) :"); character = input.next().charAt(0);
 
-        
         }
         input.close();
     }
