@@ -2,9 +2,6 @@
 import java.util.*;
 
 public class Main {
-
-    
-    
     public static void main(String[] args) {
         
         Scanner input = new Scanner(System.in);
@@ -69,50 +66,97 @@ public class Main {
 
         while(character == 'Y' || character == 'y') {
 
-        System.out.println("\n\n\n----------------------------Section below for editing data purposes---------------------------------\n\n");
+            System.out.println("\n\n\n----------------------------Section below for deleting data purposes---------------------------------\n\n");
 
-        // Prompt the user to choose what to delete
-        System.out.println("\nWhat would you like to delete?");
-        System.out.println("1. Headmaster");
-        System.out.println("2. Tutor");
-        System.out.println("3. Student");
-        System.out.print("Enter your choice: ");
-        int choice = input.nextInt();
-        input.nextLine();
-        
-        switch (choice) {
+            // Prompt the user to choose what to delete
+            System.out.println("\nWhat would you like to delete?");
+            System.out.println("1. Headmaster");
+            System.out.println("2. Tutor");
+            System.out.println("3. Student");
+            System.out.print("Enter your choice: "); int choice = input.nextInt(); input.nextLine();
+            
+            switch (choice) {
 
-            case 1:
+                case 1:
 
-                System.out.print("Enter the index of the headmaster you want to delete: "); int headMasterIndex = input.nextInt(); input.nextLine();
-                centre.get(0).deleteHeadMaster(headMasterIndex);
+                    System.out.print("Enter the index of the headmaster you want to delete: "); int headMasterIndex = input.nextInt(); input.nextLine();
+                    centre.get(0).deleteHeadMaster(headMasterIndex);
 
-                break;
+                    break;
 
-            case 2:
+                case 2:
 
-                System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
-                System.out.print("Enter the index of the tutor you want to delete: "); int tutorIndex = input.nextInt(); input.nextLine();
-                centre.get(0).deleteTutor(headMasterIndex, tutorIndex);
+                    System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
+                    System.out.print("Enter the index of the tutor you want to delete: "); int tutorIndex = input.nextInt(); input.nextLine();
+                    centre.get(0).deleteTutor(headMasterIndex, tutorIndex);
 
-                break;
+                    break;
 
-            case 3:
+                case 3:
 
-                System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
-                System.out.print("Enter the index of the tutor: "); tutorIndex = input.nextInt(); input.nextLine();
-                System.out.print("Enter the index of the student you want to delete: "); int studentIndex = input.nextInt(); input.nextLine();
-                
-                centre.get(0).deleteStudent(headMasterIndex, tutorIndex, studentIndex);
+                    System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
+                    System.out.print("Enter the index of the tutor: "); tutorIndex = input.nextInt(); input.nextLine();
+                    System.out.print("Enter the index of the student you want to delete: "); int studentIndex = input.nextInt(); input.nextLine();
+                    
+                    centre.get(0).deleteStudent(headMasterIndex, tutorIndex, studentIndex);
 
-                break;
+                    break;
 
-            default:
+                default:
 
-                System.out.println("Invalid choice. Please try again.");
+                    System.out.println("Invalid choice. Please try again.");
+            }
+
+            detailsPrinter.printDetails();
+            System.out.print("\nDo you want to continue deleting data ? (Y/N/A-adding object) :"); character = input.next().charAt(0);
+
         }
-        detailsPrinter.printDetails();
-        System.out.print("Do you want to delete a data from specific index of an object? (Y/N/A-adding object) :"); character = input.next().charAt(0);
+
+        while (character == 'A' || character == 'a' ) {
+
+            System.out.println("\n\n\n----------------------------Section below for adding data purposes---------------------------------\n\n");
+
+// Prompt the user to choose what to add
+            System.out.println("\nWhat would you like to add ?");
+            System.out.println("1. Headmaster");
+            System.out.println("2. Tutor");
+            System.out.println("3. Student");
+            System.out.print("Enter your choice: "); int choice = input.nextInt(); input.nextLine();
+
+            switch (choice) {
+
+                case 1:
+
+                    centre.get(0).addHeadMaster();
+
+                    break;
+
+                case 2:
+
+                    System.out.print("Enter the index of the headmaster where you want to add the tutor: "); int headMasterIndex = input.nextInt(); input.nextLine();
+
+                    centre.get(0).getHeadMaster(headMasterIndex).addTutor();
+                    break;
+
+                case 3:
+
+                    System.out.print("Enter the index of the headmaster where you want to add the student: "); headMasterIndex = input.nextInt(); input.nextLine();
+                    System.out.print("Enter the index of the tutor where you want to add the student: "); int tutorIndex = input.nextInt(); input.nextLine();
+
+                    centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).addStudent();
+
+                    int studentIndex = (centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).getStudent())-1;
+                    centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).getStudent(studentIndex).addMark();
+
+                    break;
+
+                default:
+
+                    System.out.println("Invalid choice. Please try again.");
+            }
+
+            detailsPrinter.printDetails();
+            System.out.print("\nDo you want to continue adding data ? (Y/N/A-adding object) :"); character = input.next().charAt(0);
 
         }
         input.close();
