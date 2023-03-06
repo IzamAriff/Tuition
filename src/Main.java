@@ -55,7 +55,20 @@ public class Main {
         PrintDetails detailsPrinter = new PrintDetails(centre);
         detailsPrinter.printDetails();
 
-        System.out.print("\nDo you want to delete or add data ? (Y-delete/A-adding object/N-exit) :"); char character = input.next().charAt(0);
+        boolean validInput = false;
+
+        char character = ' ';
+
+        while (!validInput) {
+            System.out.print("\nDo you want to continue adding data? (Y-delete/A-adding object/N-exit): ");
+            character = input.next().charAt(0);
+
+            if (character == 'Y' || character == 'A' || character == 'N' || character == 'y' || character == 'a' || character == 'n') {
+                validInput = true;
+            } else {
+                System.out.println("Invalid input. Please enter Y, A, or N.");
+            }
+        }
 
         while (character != 'N' || character != 'n') {
 
@@ -69,42 +82,70 @@ public class Main {
                 System.out.println("2. Tutor");
                 System.out.println("3. Student");
                 System.out.print("Enter your choice: "); int choice = input.nextInt(); input.nextLine();
-                
+                    
                 switch (choice) {
 
                     case 1:
 
-                        System.out.print("Enter the index of the headmaster you want to delete: "); int headMasterIndex = input.nextInt(); input.nextLine();
-                        centre.get(0).deleteHeadMaster(headMasterIndex);
+                        try {
+                            System.out.print("Enter the index of the headmaster you want to delete: "); int headMasterIndex = input.nextInt(); input.nextLine();
 
+                            centre.get(0).deleteHeadMaster(headMasterIndex);
+
+                        }   catch (IndexOutOfBoundsException e) {
+                            System.out.println("Invalid index entered. Please try again.");
+                        }   
                         break;
 
                     case 2:
 
-                        System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
-                        System.out.print("Enter the index of the tutor you want to delete: "); int tutorIndex = input.nextInt(); input.nextLine();
-                        centre.get(0).deleteTutor(headMasterIndex, tutorIndex);
+                        try {
+                            System.out.print("Enter the index of the headmaster: "); int headMasterIndex = input.nextInt(); input.nextLine();
+                                
+                            System.out.print("Enter the index of the tutor you want to delete: "); int tutorIndex = input.nextInt(); input.nextLine();
+                                
+                            centre.get(0).deleteTutor(headMasterIndex, tutorIndex);
 
+                        } catch (IndexOutOfBoundsException e) {
+                            System.out.println("Invalid index entered. Please try again.");
+                        }
                         break;
 
                     case 3:
+                        try {
+                            System.out.print("Enter the index of the headmaster: "); int headMasterIndex = input.nextInt(); input.nextLine();
+                                
+                            System.out.print("Enter the index of the tutor: "); int tutorIndex = input.nextInt(); input.nextLine();
+                                
+                            System.out.print("Enter the index of the student you want to delete: "); int studentIndex = input.nextInt(); input.nextLine();
+                                
+                            centre.get(0).deleteStudent(headMasterIndex, tutorIndex, studentIndex);
 
-                        System.out.print("Enter the index of the headmaster: "); headMasterIndex = input.nextInt(); input.nextLine();
-                        System.out.print("Enter the index of the tutor: "); tutorIndex = input.nextInt(); input.nextLine();
-                        System.out.print("Enter the index of the student you want to delete: "); int studentIndex = input.nextInt(); input.nextLine();
-                        
-                        centre.get(0).deleteStudent(headMasterIndex, tutorIndex, studentIndex);
-
+                        }   catch (IndexOutOfBoundsException e) {
+                            System.out.println("Invalid index entered. Please try again.");
+                        }   
                         break;
+
 
                     default:
 
-                        System.out.println("Invalid choice. Please try again.");
+                    System.out.println("Invalid choice. Please try again.");
                 }
-
+                
                 detailsPrinter.printDetails();
-                System.out.print("\nDo you want to continue deleting data ? (Y-delete/A-adding object/N-exit) :"); character = input.next().charAt(0);
 
+                validInput = false;
+
+                while (!validInput) {
+                    System.out.print("\nDo you want to continue adding data? (Y-delete/A-adding object/N-exit): ");
+                    character = input.next().charAt(0);
+
+                    if (character == 'Y' || character == 'A' || character == 'N' || character == 'y' || character == 'a' || character == 'n') {
+                        validInput = true;
+                    } else {
+                        System.out.println("Invalid input. Please enter Y, A, or N.");
+                    }
+                }
             }
 
             while (character == 'A' || character == 'a' ) {
@@ -128,34 +169,53 @@ public class Main {
 
                     case 2:
 
-                        System.out.print("Enter the index of the headmaster where you want to add the tutor: "); int headMasterIndex = input.nextInt(); input.nextLine();
+                        try {
+                            System.out.print("Enter the index of the headmaster where you want to add the tutor: "); int headMasterIndex = input.nextInt(); input.nextLine();
 
-                        centre.get(0).getHeadMaster(headMasterIndex).addTutor();
+                            centre.get(0).getHeadMaster(headMasterIndex).addTutor();
+
+                        }   catch (IndexOutOfBoundsException e) {
+                            System.out.println("Invalid index entered. Please try again.");
+                        }
                         break;
 
                     case 3:
 
-                        System.out.print("Enter the index of the headmaster where you want to add the student: "); headMasterIndex = input.nextInt(); input.nextLine();
-                        System.out.print("Enter the index of the tutor where you want to add the student: "); int tutorIndex = input.nextInt(); input.nextLine();
+                        try {
+                            System.out.print("Enter the index of the headmaster where you want to add the student: "); int headMasterIndex = input.nextInt(); input.nextLine();
+                            System.out.print("Enter the index of the tutor where you want to add the student: "); int tutorIndex = input.nextInt(); input.nextLine();
 
-                        centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).addStudent();
+                            centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).addStudent();
 
-                        int studentIndex = (centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).getStudent())-1;
-                        centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).getStudent(studentIndex).addMark();
+                            int studentIndex = (centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).getStudent())-1;
+                            centre.get(0).getHeadMaster(headMasterIndex).getTutor(tutorIndex).getStudent(studentIndex).addMark();
 
+                        }   catch (IndexOutOfBoundsException e) {
+                            System.out.println("Invalid index entered. Please try again.");
+                        } 
                         break;
 
                     default:
 
-                        System.out.println("Invalid choice. Please try again.");
                 }
 
                 detailsPrinter.printDetails();
-                System.out.print("\nDo you want to continue adding data ? (Y-delete/A-adding object/N-exit) :"); character = input.next().charAt(0);
 
+                validInput = false;
+
+                while (!validInput) {
+                    System.out.print("\nDo you want to continue adding data? (Y-delete/A-adding object/N-exit): ");
+                    character = input.next().charAt(0);
+
+                    if (character == 'Y' || character == 'A' || character == 'N' || character == 'y' || character == 'a' || character == 'n') {
+                        validInput = true;
+                    } else {
+                        System.out.println("Invalid input. Please enter Y, A, or N.");
+                    }
+                }
             }
+            if (character == 'N' || character == 'n') break;
         }
         input.close();
     }
-
 }
