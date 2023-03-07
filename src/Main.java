@@ -15,7 +15,6 @@ public class Main {
         
         centre.add(new Centre(name, registrationNum, yearOfServices));
 		
-        // get input for the headmasters, that acts as a leader in a certain subject
         System.out.print("\n\nEnter number of headmasters : "); int numHeadmasters = input.nextInt(); input.nextLine();
            
         for (int i = 0; i < numHeadmasters; i++) {
