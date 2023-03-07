@@ -60,7 +60,7 @@ public class Main {
         char character = ' ';
 
         while (!validInput) {
-            System.out.print("\nDo you want to continue adding data? (Y-delete/A-adding object/N-exit): ");
+            System.out.print("\nDo you want to add or remove data? (Y-delete/A-adding object/N-exit): ");
             character = input.next().charAt(0);
 
             if (character == 'Y' || character == 'A' || character == 'N' || character == 'y' || character == 'a' || character == 'n') {
